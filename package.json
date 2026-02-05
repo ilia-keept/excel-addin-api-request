@@ -1,0 +1,31 @@
+{
+  "name": "musicall-addin",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"bun run src/server/proxy.ts\" \"vite\"",
+    "dev:vite": "vite",
+    "build": "vite build && bun run manifest",
+    "manifest": "bun run scripts/generate-manifest.ts",
+    "certs": "office-addin-dev-certs install",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.17",
+    "@mantine/hooks": "^7.17",
+    "react": "^18.3",
+    "react-dom": "^18.3"
+  },
+  "devDependencies": {
+    "@types/custom-functions-runtime": "^1",
+    "@types/node": "^25.2.1",
+    "@types/office-js": "^1",
+    "@types/react": "^18.3",
+    "@types/react-dom": "^18.3",
+    "@vitejs/plugin-react": "^4",
+    "concurrently": "^9",
+    "office-addin-dev-certs": "^1",
+    "typescript": "^5",
+    "vite": "^6"
+  }
+}

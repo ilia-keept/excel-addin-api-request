@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+    xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+    xsi:type="TaskPaneApp">
+
+    <Id>1e00c787-a04d-44e1-bf31-885af479e08a</Id>
+    <Version>1.0.0.0</Version>
+    <ProviderName>MUSICALL</ProviderName>
+    <DefaultLocale>en-US</DefaultLocale>
+    <DisplayName DefaultValue="MUSICALL" />
+    <Description DefaultValue="Music track lookup via Deezer" />
+    <IconUrl DefaultValue="{{ADDIN_URL}}/assets/icon-32.png" />
+    <HighResolutionIconUrl DefaultValue="{{ADDIN_URL}}/assets/icon-80.png" />
+    <SupportUrl DefaultValue="{{ADDIN_URL}}" />
+
+    <Hosts>
+        <Host Name="Workbook" />
+    </Hosts>
+
+    <DefaultSettings>
+        <SourceLocation DefaultValue="{{ADDIN_URL}}/taskpane.html" />
+    </DefaultSettings>
+
+    <Permissions>ReadWriteDocument</Permissions>
+
+    <Requirements>
+        <Sets>
+            <Set Name="SharedRuntime" MinVersion="1.1" />
+        </Sets>
+    </Requirements>
+
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+        <Hosts>
+            <Host xsi:type="Workbook">
+                <Runtimes>
+                    <Runtime resid="Taskpane.Url" lifetime="long" />
+                </Runtimes>
+
+                <AllFormFactors>
+                    <ExtensionPoint xsi:type="CustomFunctions">
+                        <Script>
+                            <SourceLocation resid="Taskpane.Url" />
+                        </Script>
+                        <Page>
+                            <SourceLocation resid="Taskpane.Url" />
+                        </Page>
+                        <Metadata>
+                            <SourceLocation resid="Functions.Metadata.Url" />
+                        </Metadata>
+                        <Namespace resid="Functions.Namespace" />
+                    </ExtensionPoint>
+                </AllFormFactors>
+
+                <DesktopFormFactor>
+                    <GetStarted>
+                        <Title resid="GetStarted.Title" />
+                        <Description resid="GetStarted.Description" />
+                        <LearnMoreUrl resid="Taskpane.Url" />
+                    </GetStarted>
+                    <FunctionFile resid="Taskpane.Url" />
+                    <ExtensionPoint xsi:type="PrimaryCommandSurface">
+                        <OfficeTab id="TabHome">
+                            <Group id="MusicallGroup">
+                                <Label resid="Group.Label" />
+                                <Icon>
+                                    <bt:Image size="16" resid="Icon.16x16" />
+                                    <bt:Image size="32" resid="Icon.32x32" />
+                                    <bt:Image size="80" resid="Icon.80x80" />
+                                </Icon>
+                                <Control xsi:type="Button" id="ShowTaskpane">
+                                    <Label resid="Taskpane.Label" />
+                                    <Supertip>
+                                        <Title resid="Taskpane.Label" />
+                                        <Description resid="Taskpane.Tooltip" />
+                                    </Supertip>
+                                    <Icon>
+                                        <bt:Image size="16" resid="Icon.16x16" />
+                                        <bt:Image size="32" resid="Icon.32x32" />
+                                        <bt:Image size="80" resid="Icon.80x80" />
+                                    </Icon>
+                                    <Action xsi:type="ShowTaskpane">
+                                        <TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>
+                                        <SourceLocation resid="Taskpane.Url" />
+                                    </Action>
+                                </Control>
+                            </Group>
+                        </OfficeTab>
+                    </ExtensionPoint>
+                </DesktopFormFactor>
+            </Host>
+        </Hosts>
+
+        <Resources>
+            <bt:Images>
+                <bt:Image id="Icon.16x16" DefaultValue="{{ADDIN_URL}}/assets/icon-16.png" />
+                <bt:Image id="Icon.32x32" DefaultValue="{{ADDIN_URL}}/assets/icon-32.png" />
+                <bt:Image id="Icon.80x80" DefaultValue="{{ADDIN_URL}}/assets/icon-80.png" />
+            </bt:Images>
+            <bt:Urls>
+                <bt:Url id="Taskpane.Url" DefaultValue="{{ADDIN_URL}}/taskpane.html" />
+                <bt:Url id="Functions.Metadata.Url" DefaultValue="{{ADDIN_URL}}/functions.json" />
+            </bt:Urls>
+            <bt:ShortStrings>
+                <bt:String id="Group.Label" DefaultValue="MUSICALL" />
+                <bt:String id="Taskpane.Label" DefaultValue="Show MUSICALL" />
+                <bt:String id="Functions.Namespace" DefaultValue="MUSICALL" />
+                <bt:String id="GetStarted.Title" DefaultValue="Get started with MUSICALL!" />
+            </bt:ShortStrings>
+            <bt:LongStrings>
+                <bt:String id="Taskpane.Tooltip" DefaultValue="Open the MUSICALL task pane" />
+                <bt:String id="GetStarted.Description" DefaultValue="MUSICALL loaded successfully. Go to the Home tab and click Show MUSICALL to look up tracks." />
+            </bt:LongStrings>
+        </Resources>
+    </VersionOverrides>
+</OfficeApp>

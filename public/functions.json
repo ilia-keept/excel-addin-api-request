@@ -1,0 +1,67 @@
+{
+  "allowCustomDataForDataTypeAny": true,
+  "functions": [
+    {
+      "id": "ISRC",
+      "name": "ISRC",
+      "description": "Gets track info by ISRC code from a music service",
+      "parameters": [
+        {
+          "name": "service",
+          "description": "Music service name (e.g. \"deezer\")",
+          "type": "string"
+        },
+        {
+          "name": "isrc",
+          "description": "ISRC code",
+          "type": "string"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    },
+    {
+      "id": "ALBUM",
+      "name": "ALBUM",
+      "description": "Gets album tracklist from a music service",
+      "parameters": [
+        {
+          "name": "service",
+          "description": "Music service name (e.g. \"deezer\")",
+          "type": "string"
+        },
+        {
+          "name": "query",
+          "description": "Album search query (e.g. \"Queen News of the World\")",
+          "type": "string"
+        }
+      ],
+      "result": {
+        "type": "string",
+        "dimensionality": "matrix"
+      }
+    },
+    {
+      "id": "TRACK",
+      "name": "TRACK",
+      "description": "Gets detailed track information from a music service",
+      "parameters": [
+        {
+          "name": "service",
+          "description": "Music service name (e.g. \"deezer\")",
+          "type": "string"
+        },
+        {
+          "name": "query",
+          "description": "Track query (e.g. \"Queen - We Will Rock You\")",
+          "type": "string"
+        }
+      ],
+      "result": {
+        "type": "string",
+        "dimensionality": "matrix"
+      }
+    }
+  ]
+}
