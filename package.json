@@ -6,7 +6,7 @@
     "dev": "concurrently \"bun run src/server/proxy.ts\" \"vite\"",
     "dev:vite": "vite",
     "build": "vite build && bun run manifest",
-    "manifest": "bun run scripts/generate-manifest.ts",
+    "manifest": "bun --env-file=.env run scripts/generate-manifest.ts",
     "certs": "office-addin-dev-certs install",
     "check": "tsc --noEmit"
   },

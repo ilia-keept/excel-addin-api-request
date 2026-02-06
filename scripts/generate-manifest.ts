@@ -2,7 +2,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { resolve } from 'node:path'
 
-const addinUrl = process.env.ADDIN_URL ?? 'https://localhost:3000'
+const addinUrl = process.env.ADDIN_URL
 const root = resolve(import.meta.dirname, '..')
 
 const template = readFileSync(resolve(root, 'manifest.xml'), 'utf-8')

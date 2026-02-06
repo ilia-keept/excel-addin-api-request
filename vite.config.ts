@@ -22,7 +22,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api/deezer': {
-        target: 'http://localhost:9476',
+        target: process.env.PROXY_URL,
         changeOrigin: true,
       },
     },
