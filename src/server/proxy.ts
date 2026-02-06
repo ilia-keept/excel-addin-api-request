@@ -1,7 +1,8 @@
 const DEEZER_BASE = 'https://api.deezer.com'
+const proxyUrl = new URL(process.env.PROXY_URL ?? 'http://localhost:9476')
 
 Bun.serve({
-  port: 9476,
+  port: Number(proxyUrl.port),
   async fetch(req) {
     const url = new URL(req.url)
     const deezerPath = url.pathname.replace('/api/deezer', '')
@@ -29,4 +30,4 @@ Bun.serve({
   },
 })
 
-console.log('Proxy listening on http://localhost:9476')
+console.log(`Proxy listening on ${proxyUrl.href}`)

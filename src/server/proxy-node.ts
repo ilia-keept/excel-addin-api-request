@@ -11,9 +11,10 @@ process.on('SIGINT', () => process.exit())
 process.on('SIGTERM', () => process.exit())
 
 const DEEZER_BASE = 'https://api.deezer.com'
+const proxyUrl = new URL(process.env.PROXY_URL ?? 'http://localhost:9476')
 
 const server = createServer(async (req, res) => {
-  const url = new URL(req.url ?? '/', 'http://localhost:9476')
+  const url = new URL(req.url ?? '/', proxyUrl)
   const deezerPath = url.pathname.replace('/api/deezer', '')
   const targetUrl = `${DEEZER_BASE}${deezerPath}${url.search}`
 
@@ -34,6 +35,6 @@ const server = createServer(async (req, res) => {
   }
 })
 
-server.listen(9476, () => {
-  console.log('Proxy listening on http://localhost:9476')
+server.listen(Number(proxyUrl.port), () => {
+  console.log(`Proxy listening on ${proxyUrl.href}`)
 })
